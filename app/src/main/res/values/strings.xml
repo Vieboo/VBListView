@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">VBListView</string>
+
+    <string name="header_hint_refresh_normal">接着往下拉</string>
+    <string name="header_hint_refresh_ready">可以放开了</string>
+    <string name="header_hint_refresh_loading">努力刷新中&#8230;</string>
+    <string name="header_hint_refresh_time"></string>
+    <string name="footer_hint_load_normal">更多</string>
+    <string name="footer_hint_load_ready">可以放开了</string>
+
+</resources>
