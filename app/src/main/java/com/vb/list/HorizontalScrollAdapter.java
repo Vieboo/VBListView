@@ -2,6 +2,7 @@ package com.vb.list;
 
 import android.content.Context;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
@@ -20,12 +21,21 @@ public class HorizontalScrollAdapter extends BaseAdapter {
     View headView;
 
     MyHScrollView head_scroll;
+    private int touchPosition = -1; //点击事件标志位
 
     public HorizontalScrollAdapter(Context context, List<String> list, View head) {
         this.mContext = context;
         this.dataList = list;
         this.headView = head;
         head_scroll = (MyHScrollView) headView.findViewById(R.id.head_scroll);
+    }
+
+    public int getTouchPosition() {
+        return touchPosition;
+    }
+
+    public void setTouchPosition(int touchPosition) {
+        this.touchPosition = touchPosition;
     }
 
     @Override
@@ -44,7 +54,7 @@ public class HorizontalScrollAdapter extends BaseAdapter {
     }
 
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
+    public View getView(final int position, View convertView, ViewGroup parent) {
         ViewHolder holder = null;
         if(null == convertView) {
             holder = new ViewHolder();
@@ -56,6 +66,14 @@ public class HorizontalScrollAdapter extends BaseAdapter {
         else {
             holder = (ViewHolder) convertView.getTag();
         }
+
+        convertView.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                setTouchPosition(position);
+                return false;
+            }
+        });
 
         return convertView;
     }
