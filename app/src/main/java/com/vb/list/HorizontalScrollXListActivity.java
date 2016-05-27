@@ -139,6 +139,7 @@ public class HorizontalScrollXListActivity extends Activity implements XListView
                 case MotionEvent.ACTION_MOVE:
                     if(Math.abs(lastX - tempX) > 2 || Math.abs(lastY - tempY) > 2) {
                         isClick = false;
+                        adapter.setTouchPosition(-1);
                     }else {
                         isClick = true;
                     }
@@ -146,6 +147,7 @@ public class HorizontalScrollXListActivity extends Activity implements XListView
                 case MotionEvent.ACTION_UP:
                     if(Math.abs(lastX - tempX) > 2 || Math.abs(lastY - tempY) > 2) {
                         isClick = false;
+                        adapter.setTouchPosition(-1);
                     }else {
                         isClick = true;
                     }
